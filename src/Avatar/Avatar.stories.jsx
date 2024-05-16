@@ -3,19 +3,27 @@ import { Avatar } from './Avatar';
 export default {
   title: 'Design System/Avatar',
   component: Avatar,
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: ['tiny', 'small', 'medium', 'large'],
+    },
+  },
 };
 
 export const Standard = {
   args: {
     size: 'large',
-    username: 'Tom Coleman',
+    username: 'Tom Coleman1',
     src: 'https://avatars2.githubusercontent.com/u/132554',
   },
 };
 
 export const Sizes = {
   args: {
-    username: 'Tom Colema1n',
+    username: 'Tom Coleman2',
     src: 'https://avatars2.githubusercontent.com/u/132554',
   },
   render: (args) => (

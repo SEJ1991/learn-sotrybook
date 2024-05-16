@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Button } from './Button';
 import { Icon } from '../Icon/Icon';
 import { StoryLinkWrapper } from '../LinkWrapper';
-
+import { userEvent, within } from '@storybook/testing-library';
 
 const CustomButton = styled.button`
   border: 1px solid green;
@@ -327,3 +327,19 @@ export const AnchorWrapper = {
   ),
 };
 
+export const WithInteractions = () => (
+  <Button
+    ButtonWrapper={StoryLinkWrapper}
+    appearance='primary'
+    href='http://storybook.js.org'
+  >
+    button
+  </Button>
+);
+
+WithInteractions.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByRole('link'));
+};
+
+WithInteractions.storyName = 'Button with interactions';
